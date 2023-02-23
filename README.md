@@ -35,7 +35,7 @@ A aplicação conta com as seguintes funcionalidades:
 - Página inicial : Nesta tela o usuário consegue ter acesso a todos os perfumes disponíveis;
  ![image](https://user-images.githubusercontent.com/90935999/220807230-fd07834b-b404-4966-bc81-fbe854de96e4.png)
 
-- Perfume selecionado: Nesta tela fica disponível a descrição e o valor do pergume e opção para adicionar no carrinho de compras;
+- Perfume selecionado: Nesta tela fica disponível a descrição e o valor do perfume e opção para adicionar no carrinho de compras;
  ![image](https://user-images.githubusercontent.com/90935999/220807501-1efde598-87a3-4153-9a28-080c38a0302f.png)
  
 - Carrinho de compras: No carrinho contém o perfume, o preço, o total da compra e a ação de remover algum produto ou todos do carrinho;
