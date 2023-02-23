@@ -18,7 +18,7 @@ require_once 'db_connection.php';
 <body>
     <?php include('header.php'); ?>
 
-    <main>
+    <main class="container my-4">
         <?php
         // verifica se o usuário está logado
         if (isset($_SESSION['user_id'])) {
@@ -35,37 +35,63 @@ require_once 'db_connection.php';
             $compras = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
             // exibe as informações do usuário e suas compras
-        
-            echo '<h1 class="my-4">Minha Conta</h1>';
-            echo '<p class="user-data">Nome: ' . $user['nome'] . '</p>';
-            echo '<p class="user-data">Sobrenome: ' . $user['sobrenome'] . '</p>';
-            echo '<p class="user-data">Endereço: ' . $user['endereco'] . '</p>';
-            echo '<p class="user-data">E-mail: ' . $user['email'] . '</p>';
-            echo '<p class="user-data">Celular: ' . $user['telefone'] . '</p>';
-            echo '<h2 class="my-4">Minhas Compras</h2>';
-            
-            
-            if (count($compras) > 0) {
-                echo "<table>";
-                echo "<tr><th>Produto</th><th>Preço</th><th>Data da Compra</th></tr>";
-                foreach ($compras as $compra) {
-                    $produto_id = $compra['produto_id'];
-                    $query = "SELECT nome, preco FROM perfumes WHERE id = $produto_id";
-                    $result = mysqli_query($conn, $query);
-                    $produto = mysqli_fetch_assoc($result);
-                    echo "<tr>";
-                    echo "<td>{$produto['nome']}</td>";
-                    echo "<td>{$produto['preco']}</td>";
-                    echo "<td>{$compra['data']}</td>";
-                    echo "</tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "<p>Você ainda não realizou nenhuma compra.</p>";
-            }
-        } ?>
+            ?>
+            <div class="row">
+                <div class="col-md-6 bg-dark text-white rounded">
+                    <h1>Minha Conta</h1>
+                    <p><strong>Nome:</strong>
+                        <?php echo $user['nome'] . ' ' . $user['sobrenome']; ?>
+                    </p>
+                    <p><strong>Endereço:</strong>
+                        <?php echo $user['endereco']; ?>
+                    </p>
+                    <p><strong>E-mail:</strong>
+                        <?php echo $user['email']; ?>
+                    </p>
+                    <p><strong>Celular:</strong>
+                        <?php echo $user['telefone']; ?>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Minhas Compras</h2>
+                    <?php if (count($compras) > 0) { ?>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Preço</th>
+                                    <th>Data da Compra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($compras as $compra) { ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $compra['nome_produto']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo 'R$ ' . number_format($compra['preco_produto'], 2, ',', '.'); ?>
+                                        </td>
+                                        <td>
+                                            <?php echo date('d/m/Y', strtotime($compra['data'])); ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    <?php } else { ?>
+                        <p>Você ainda não realizou nenhuma compra.</p>
+                    <?php } ?>
+                </div>
+            </div>
+        <?php } ?>
     </main>
+
     <?php include('footer.php'); ?>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
 
 </html>
 
