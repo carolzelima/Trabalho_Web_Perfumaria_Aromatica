@@ -41,5 +41,4 @@ A aplicação conta com as seguintes funcionalidades:
 - Carrinho de compras: No carrinho contém o perfume, o preço, o total da compra e a ação de remover algum produto ou todos do carrinho;
  ![image](https://user-images.githubusercontent.com/90935999/220807731-e42e0ed6-be52-482a-bf0e-87c6725cffe5.png)
 
-- Perfil de usuário: Nessa tela a conta do usuário contém as informações de cadastro e suas compras.
- ![image](https://user-images.githubusercontent.com/90935999/220809608-cfe362d6-4b0b-4b7a-b69e-63a9d80a6486.png)
+- Perfil de usuário: A conta do usuário contém as informações de cadastro e suas compras.
